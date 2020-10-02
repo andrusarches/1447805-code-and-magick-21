@@ -33,18 +33,21 @@ var randomizeSimilarWizards = function () {
 
 randomizeSimilarWizards();
 
-var renderWizard = function (array) {
+var renderWizard = function (arrayElement) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
 
-  wizardElement.querySelector('.setup-similar-label').textContent = array[i].name;
-  wizardElement.querySelector('.wizard-coat').style.fill = array[i].coatColor;
-  wizardElement.querySelector('.wizard-eyes').style.fill = array[i].eyesColor;
-  similarWizardsList.appendChild(wizardElement);
+  wizardElement.querySelector('.setup-similar-label').textContent = arrayElement.name;
+  wizardElement.querySelector('.wizard-coat').style.fill = arrayElement.coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = arrayElement.eyesColor;
+  return wizardElement;
 };
 
+var fragment = document.createDocumentFragment();
+
 for (var i = 0; i < randomizedWizards.length; i++) {
-  renderWizard(randomizedWizards);
+  fragment.appendChild(renderWizard(randomizedWizards[i]));
 }
+similarWizardsList.appendChild(fragment);
 
 var setupMenuSimilarWizards = setupMenu.querySelector('.setup-similar');
 setupMenuSimilarWizards.classList.remove('hidden');
