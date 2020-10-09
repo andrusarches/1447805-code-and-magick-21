@@ -68,7 +68,7 @@ setupMenuClose.addEventListener('keydown', function (evt) {
   }
 });
 
-var z = 1;
+var z = 0;
 
 var cycleThroughArrayItems = function (array) {
   z = (z + 1) % (array.length);
